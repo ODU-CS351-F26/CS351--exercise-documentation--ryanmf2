@@ -1,6 +1,6 @@
 # Project Reports
 
-Your Name
+Ryan Funkhouser
 
 * [Tests](./reports/tests/test/)
 * [JavaDoc](./reports/javadoc/)
