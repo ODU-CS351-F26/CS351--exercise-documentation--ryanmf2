@@ -38,28 +38,31 @@ tasks.register('reports') {
     dependsOn 'build'
     dependsOn 'javadoc'
 
-    copy {
-        from 'src/main/html'
-        into 'build/reports/'
-    }
+    doLast {
+        copy {
+            from 'src/main/html'
+            into 'build/reports/'
+        }
 
-    copy {
-        from 'build/docs/'
-        into 'build/reports/'
+        copy {
+            from 'build/docs/'
+            into 'build/reports/'
+        }
     }
 }
 
-tasks.register('deployReports') {
-    dependsOn 'reports'
+gitPublish {
+    repoUri = 'git@github.com:ODU-CS351-F26/CS351--exercise-documentation--ryanmf2.git'
 
-    gitPublishCopy.dependsOn 'build'
-    gitPublish {
-        repoUri = 'git@github.com:ODU-CS351-F26/CS351--exercise-documentation--ryanmf2.git'
+    branch = 'gh-pages'
 
-        branch = 'gh-pages'
-
-        contents {
-            from 'build/reports'
-        }
+    contents {
+        from 'build/reports'
     }
+}
+
+gitPublishCopy.dependsOn 'reports'
+
+tasks.register('deployReports') {
+    dependsOn 'gitPublishPush'
 }
