@@ -40,12 +40,12 @@ tasks.register('reports') {
 
     copy {
         from 'src/main/html'
-        into 'reports/'
+        into 'build/reports/'
     }
 
     copy {
         from 'build/docs/'
-        into 'reports/'
+        into 'build/reports/'
     }
 }
 
