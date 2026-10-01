@@ -51,7 +51,6 @@ tasks.register('reports') {
 
 tasks.register('deployReports') {
     dependsOn 'reports'
-    dependsOn 'gitPublish'
 
     gitPublishCopy.dependsOn 'build'
     gitPublish {
